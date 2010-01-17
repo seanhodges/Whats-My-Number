@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">What's My Number?</string>
+
+    <string name="phone_number_config">phone_number_config</string>
+    <string name="no_phone_number">Your phone number is not stored on your SIM card. Please enter it in the box below.</string>
+    <string name="add_widget_instruction">To add to home screen, press Menu button -> Add -> Widgets.</string>
+</resources>
