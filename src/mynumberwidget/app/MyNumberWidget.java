@@ -4,7 +4,6 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.telephony.TelephonyManager;
 import android.widget.RemoteViews;
 
 public class MyNumberWidget extends AppWidgetProvider {
@@ -18,11 +17,6 @@ public class MyNumberWidget extends AppWidgetProvider {
 		String phoneNumber = getNumberFromConfigFile(context);
 		
 		if (phoneNumber == null || phoneNumber.length() == 0) {
-			// Get the phone number from the telephony manager, and display it
-			// This maintains backwards compatibility with older installs 
-			phoneNumber = getNumberFromTelephonyManager(context);
-		}
-		if (phoneNumber == null || phoneNumber.length() == 0) {
 			phoneNumber = "No phone number configured";
 		}
 		
@@ -34,11 +28,6 @@ public class MyNumberWidget extends AppWidgetProvider {
 		String configFile = context.getResources().getString(R.string.phone_number_config);
 		SharedPreferences prefs = context.getSharedPreferences(configFile, Context.MODE_PRIVATE);
 		return prefs.getString("phone_number", "");
-	}
-
-	private String getNumberFromTelephonyManager(Context context) {
-		TelephonyManager info = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
-		return info.getLine1Number();
 	}
 	
 }

@@ -3,5 +3,5 @@
 	android:minWidth="292dip"
 	android:minHeight="72dip"
 	android:initialLayout="@layout/main"
-	
+	android:configure="mynumberwidget.app.ConfigurationDialog"
 />
