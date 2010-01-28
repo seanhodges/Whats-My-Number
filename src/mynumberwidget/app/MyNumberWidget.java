@@ -3,11 +3,23 @@ package mynumberwidget.app;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.telephony.TelephonyManager;
 import android.widget.RemoteViews;
 
 public class MyNumberWidget extends AppWidgetProvider {
+	
+	public void onReceive(Context context, Intent intent) {
+		String action = intent.getAction();
+	    if (AppWidgetManager.ACTION_APPWIDGET_UPDATE.equals(action))
+	    {
+	    	RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.main);
+	        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+	        int[] appWidgetIds = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
+	        appWidgetManager.updateAppWidget(appWidgetIds, views);
+	    }
+	}
 
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 			int[] appWidgetIds) {
