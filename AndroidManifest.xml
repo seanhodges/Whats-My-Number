@@ -20,6 +20,8 @@
     		</intent-filter>
     		
     	</activity>
+    	
+    	<activity android:name=".CopyToClipboard" android:theme="@android:style/Theme.Translucent" />
 	
         <receiver android:name=".MyNumberWidget"
         	android:label="@string/app_name"

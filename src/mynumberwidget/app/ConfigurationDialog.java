@@ -1,14 +1,17 @@
 package mynumberwidget.app;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Resources.Theme;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -107,7 +110,17 @@ public class ConfigurationDialog extends Activity implements OnClickListener {
 		ComponentName me = new ComponentName(this, MyNumberWidget.class);
 		AppWidgetManager mgr = AppWidgetManager.getInstance(this);
 		RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.main);
+		
+		// Attach a click listener to perform copy-to-clipboard
+		Intent action = new Intent(this.getApplicationContext(), CopyToClipboard.class);
+		action.putExtra("PHONE_NUMBER", phoneNumber);
+		PendingIntent pendingIntent = PendingIntent.getActivity(this.getApplicationContext(), 0, action, PendingIntent.FLAG_CANCEL_CURRENT);
+		views.setOnClickPendingIntent(R.id.container, pendingIntent);
+		Log.v(getClass().getName(), "Pending intent set, phone number = " + phoneNumber);
+		
+		// Set the phone number text
 		views.setTextViewText(R.id.phone_number_show, phoneNumber);
+		
 		mgr.updateAppWidget(me, views);
 		
 		if (mgr.getAppWidgetIds(me).length == 0) {
