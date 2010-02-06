@@ -1,23 +1,19 @@
 package mynumberwidget.app;
 
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.Resources.Theme;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RemoteViews;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class ConfigurationDialog extends Activity implements OnClickListener {
@@ -72,21 +68,31 @@ public class ConfigurationDialog extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.config_save_button:
-				savePhoneNumber();
+				saveConfig();
 				break;
 		}
 	}
 	
-	private void savePhoneNumber() {
+	private void saveConfig() {
 		
-		// Save the phone number to the preferences
+		// Get the phone number setting
 		EditText phoneNumberBox = (EditText)findViewById(R.id.phone_number_edit);
 		String phoneNumber = phoneNumberBox.getText().toString();
+		
+		// Get the theme setting
+		RadioButton themeDark = (RadioButton)findViewById(R.id.theme_dark);
+		int theme = WidgetUpdateHelper.THEME_LIGHT;
+		if (themeDark.isChecked()) {
+			theme = WidgetUpdateHelper.THEME_DARK;
+		}
+		
+		// Save the phone number to the preferences
 		Editor editor = prefs.edit();
 		editor.putString("phone_number", phoneNumber);
+		editor.putInt("theme", theme);
 		editor.commit();
 		
-		updateWidget(phoneNumber);
+		WidgetUpdateHelper.updateWidget(this, phoneNumber, theme);
 		
 		// Return success to the appwidget
 		int appWidgetId = -1;
@@ -102,32 +108,5 @@ public class ConfigurationDialog extends Activity implements OnClickListener {
 			setResult(RESULT_OK, resultValue);
 		}
 		finish();
-	}
-
-	private void updateWidget(String phoneNumber) {
-		
-		// Redraw the widget now
-		ComponentName me = new ComponentName(this, MyNumberWidget.class);
-		AppWidgetManager mgr = AppWidgetManager.getInstance(this);
-		RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.main);
-		
-		// Attach a click listener to perform copy-to-clipboard
-		Intent action = new Intent(this.getApplicationContext(), CopyToClipboard.class);
-		action.putExtra("PHONE_NUMBER", phoneNumber);
-		PendingIntent pendingIntent = PendingIntent.getActivity(this.getApplicationContext(), 0, action, PendingIntent.FLAG_CANCEL_CURRENT);
-		views.setOnClickPendingIntent(R.id.container, pendingIntent);
-		Log.v(getClass().getName(), "Pending intent set, phone number = " + phoneNumber);
-		
-		// Set the phone number text
-		views.setTextViewText(R.id.phone_number_show, phoneNumber);
-		
-		mgr.updateAppWidget(me, views);
-		
-		if (mgr.getAppWidgetIds(me).length == 0) {
-			// Instruct the user how to add the widget, if one has not been placed already
-			Toast toast = Toast.makeText(this, R.string.add_widget_instruction, Toast.LENGTH_LONG);
-			toast.setGravity(Gravity.CENTER, 0, 0);
-			toast.show();
-		}
 	}
 }

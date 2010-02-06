@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <style name="WidgetBackground">
-        <item name="android:background">@drawable/frame</item>
+	
+	<!-- Theme for light background -->
+	
+	<style name="Background_Light">
+        <item name="android:background">@drawable/frame_light</item>
     </style>
     
-    <style name="PhoneNumber">
+    <style name="PhoneNumber_Light">
     	<item name="android:textSize">28sp</item>
         <item name="android:textColor">@android:color/black</item>
-    </style>    
+    </style>
+    
+    <!-- Theme for dark background -->  
+    
+    <style name="Background_Dark">
+        <item name="android:background">@drawable/frame_dark</item>
+    </style>
+    
+    <style name="PhoneNumber_Dark">
+    	<item name="android:textSize">28sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>

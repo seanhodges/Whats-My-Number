@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/container"
-	style="@style/WidgetBackground"
+	style="@style/Background_Light"
     >
     
     <ImageView
@@ -23,7 +23,7 @@
 	    android:layout_centerVertical="true"
 	    android:layout_centerHorizontal="true"
 	    android:paddingLeft="10dip"
-	    style="@style/PhoneNumber"
+	    style="@style/PhoneNumber_Light"
 	    />
     
 </RelativeLayout>

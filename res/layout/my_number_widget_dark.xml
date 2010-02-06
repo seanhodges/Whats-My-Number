@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/container"
+	style="@style/Background_Dark"
+    >
+    
+    <ImageView
+    	android:id="@+id/call_icon"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_centerVertical="true"
+	    android:paddingLeft="30dip"
+    	android:src="@android:drawable/sym_action_call"
+    	/>
+    	
+	<TextView  
+		android:id="@+id/phone_number_show"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerVertical="true"
+	    android:layout_centerHorizontal="true"
+	    android:paddingLeft="10dip"
+	    style="@style/PhoneNumber_Dark"
+	    />
+    
+</RelativeLayout>

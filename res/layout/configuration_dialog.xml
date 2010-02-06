@@ -10,13 +10,41 @@
   	android:layout_width="fill_parent"
   	android:layout_height="wrap_content"
   	android:text="Phone Number" 
-  	android:paddingBottom="10dip" />
+  	android:layout_marginBottom="10dip" />
   
   <EditText
   	android:layout_width="fill_parent"
   	android:layout_height="wrap_content"
-  	android:id="@+id/phone_number_edit" />
+  	android:id="@+id/phone_number_edit"
+  	android:layout_marginBottom="10dip" />
+
+  <TextView
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content"
+  	android:text="Theme" />
   	
+  <RadioGroup
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    
+    <RadioButton
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Light"
+      android:checked="true"
+      android:id="@+id/theme_light" />
+
+    <RadioButton
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Dark"
+      android:layout_toRightOf="@id/theme_light"
+      android:layout_marginLeft="20dip"
+      android:id="@+id/theme_dark" />
+  
+  </RadioGroup>
+    	
   <RelativeLayout
   	android:paddingTop="10dip"
   	android:layout_width="fill_parent"
