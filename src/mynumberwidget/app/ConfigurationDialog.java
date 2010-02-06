@@ -47,7 +47,6 @@ public class ConfigurationDialog extends Activity implements OnClickListener {
 			
 			if (phoneNumber != null && phoneNumber.length() > 0) {
 				phoneNumberBox.setText(phoneNumber);
-				savePhoneNumber();
 			}
 			else {
 				// Phone number not found on SIM card
