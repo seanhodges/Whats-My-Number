@@ -24,8 +24,8 @@ public class MyNumberWidget extends AppWidgetProvider {
 		SharedPreferences prefs = context.getSharedPreferences(configFile, Context.MODE_PRIVATE);
 		
 		AppWidgetData data = new AppWidgetData();
-		data.phoneNumber = prefs.getString("phone_number", "");
-		data.theme = prefs.getInt("theme", WidgetUpdateHelper.THEME_LIGHT);
+		data.phoneNumber = prefs.getString(ConfigurationDialog.PHONE_NUMBER_PREF_KEY, "");
+		data.theme = prefs.getInt(ConfigurationDialog.THEME_PREF_KEY, WidgetUpdateHelper.THEME_LIGHT);
 		return data;
 	}
 	

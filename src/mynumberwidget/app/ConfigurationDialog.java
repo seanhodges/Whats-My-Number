@@ -18,6 +18,9 @@ import android.widget.Toast;
 
 public class ConfigurationDialog extends Activity implements OnClickListener {
 	
+	public static final String THEME_PREF_KEY = "theme";
+	public static final String PHONE_NUMBER_PREF_KEY = "phone_number";
+	
 	private SharedPreferences prefs;
 	private static boolean firstTime = true;
 
@@ -58,7 +61,7 @@ public class ConfigurationDialog extends Activity implements OnClickListener {
 		}
 		else {
 			// Use last saved phone number in preferences
-			String phoneNumber = prefs.getString("phone_number", "");
+			String phoneNumber = prefs.getString(PHONE_NUMBER_PREF_KEY, "");
 			phoneNumberBox.setText(phoneNumber);
 		}
 		
@@ -88,8 +91,8 @@ public class ConfigurationDialog extends Activity implements OnClickListener {
 		
 		// Save the phone number to the preferences
 		Editor editor = prefs.edit();
-		editor.putString("phone_number", phoneNumber);
-		editor.putInt("theme", theme);
+		editor.putString(PHONE_NUMBER_PREF_KEY, phoneNumber);
+		editor.putInt(THEME_PREF_KEY, theme);
 		editor.commit();
 		
 		WidgetUpdateHelper.updateWidget(this, phoneNumber, theme);

@@ -19,7 +19,7 @@ public class CopyToClipboard extends Activity {
 		Log.v(getClass().getName(), "Clipboard copy complete, phone number = " + phoneNumber);
 		
 		// Close activity immediately
-		Toast toast = Toast.makeText(getApplicationContext(), "Phone number copied to clipboard", Toast.LENGTH_SHORT);
+		Toast toast = Toast.makeText(getApplicationContext(), getText(R.string.copied_to_clipboard), Toast.LENGTH_SHORT);
 		toast.setGravity(Gravity.CENTER, 0, 0);
 		toast.show();
 		finish();
