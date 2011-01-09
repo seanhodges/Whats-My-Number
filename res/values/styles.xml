@@ -3,8 +3,12 @@
 	
 	<!-- Theme for light background -->
 	
-	<style name="Background_Light">
-        <item name="android:background">@drawable/frame_light</item>
+	<style name="Background_Narrow_Light">
+        <item name="android:background">@drawable/frame_narrow_light</item>
+    </style>
+    
+    <style name="Background_Wide_Light">
+        <item name="android:background">@drawable/frame_wide_light</item>
     </style>
     
     <style name="PhoneNumber_Light">
@@ -14,8 +18,12 @@
     
     <!-- Theme for dark background -->  
     
-    <style name="Background_Dark">
-        <item name="android:background">@drawable/frame_dark</item>
+    <style name="Background_Narrow_Dark">
+        <item name="android:background">@drawable/frame_narrow_dark</item>
+    </style>
+    
+    <style name="Background_Wide_Dark">
+        <item name="android:background">@drawable/frame_wide_dark</item>
     </style>
     
     <style name="PhoneNumber_Dark">

@@ -13,10 +13,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
-public class ConfigurationDialog extends Activity implements OnClickListener {
+public abstract class AbstractConfigurationDialog extends Activity implements OnClickListener {
 	
 	public static final String THEME_PREF_KEY = "theme";
 	public static final String PHONE_NUMBER_PREF_KEY = "phone_number";
@@ -82,12 +81,7 @@ public class ConfigurationDialog extends Activity implements OnClickListener {
 		EditText phoneNumberBox = (EditText)findViewById(R.id.phone_number_edit);
 		String phoneNumber = phoneNumberBox.getText().toString();
 		
-		// Get the theme setting
-		RadioButton themeDark = (RadioButton)findViewById(R.id.theme_dark);
-		int theme = WidgetUpdateHelper.THEME_LIGHT;
-		if (themeDark.isChecked()) {
-			theme = WidgetUpdateHelper.THEME_DARK;
-		}
+		int theme = applyThemeSetting();
 		
 		// Save the phone number to the preferences
 		Editor editor = prefs.edit();
@@ -112,4 +106,6 @@ public class ConfigurationDialog extends Activity implements OnClickListener {
 		}
 		finish();
 	}
+
+	protected abstract int applyThemeSetting();
 }

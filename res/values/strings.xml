@@ -2,10 +2,13 @@
 <resources>
     
     <string name="app_name">What\'s My Number?</string>
+    <string name="app_name_narrow">What\'s My Number? 1x1</string>
+    <string name="app_name_wide">What\'s My Number? 4x1</string>
 
     <string name="phone_number_config">phone_number_config</string>
     <string name="no_phone_number">Your phone number is not stored on your SIM card. Please enter it in the box below.</string>
     <string name="add_widget_instruction">To add to home screen, press Menu button -> Add -> Widgets.</string>
     
     <string name="copied_to_clipboard">Phone number copied to clipboard</string>
+    <string name="display_phone_number">Your phone number is: {PHONE_NUMBER}</string>
 </resources>
